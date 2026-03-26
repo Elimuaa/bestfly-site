@@ -966,6 +966,27 @@ body:not(.scrolling) .section-title{
   .ticker-item{padding:0 20px;}
 }
 
+/* ── PRICE CALCULATOR ── */
+.price-estimate-heading{font-family:'Playfair Display',serif;font-size:22px;color:var(--blue);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.price-estimate-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.price-est-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;}
+.price-est-val{font-family:'Playfair Display',serif;font-size:32px;font-weight:500;color:var(--blue);display:block;line-height:1.1;}
+.price-est-secondary{font-size:14px;color:var(--accent);font-weight:600;margin-top:4px;}
+.price-est-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:6px;}
+.price-est-aircraft{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:14px;}
+.price-est-aircraft-icon{font-size:24px;}
+.price-est-aircraft-name{font-weight:600;color:var(--blue);font-size:14px;}
+.price-est-aircraft-type{font-size:11px;color:var(--text-muted);}
+.price-est-disclaimer{font-size:11px;color:var(--text-muted);line-height:1.6;margin-top:12px;font-style:italic;}
+.price-est-quote-btn{background:var(--blue);color:var(--white);border:none;padding:13px 32px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:8px;transition:all .3s;font-family:'DM Sans',sans-serif;margin-top:12px;}
+.price-est-quote-btn:hover{background:var(--blue-mid);box-shadow:0 8px 24px rgba(26,60,110,.3);transform:translateY(-1px);}
+.price-est-custom{text-align:center;padding:12px 0;}
+.price-est-custom-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:8px;}
+.price-est-custom-sub{font-size:13px;color:var(--text-mid);margin-bottom:14px;}
+.price-est-pax-note{font-size:11px;color:var(--blue-mid);background:rgba(46,95,163,.08);border:1px solid rgba(46,95,163,.15);border-radius:8px;padding:8px 14px;margin-bottom:12px;display:inline-flex;align-items:center;gap:6px;}
+@media(max-width:900px){
+  .price-estimate-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -1118,12 +1139,12 @@ body:not(.scrolling) .section-title{
       </div>
     </div>
     <div class="booking-grid">
-      <div class="booking-field airport-wrap"><label data-i18n="lbl_from">From</label><input type="text" id="from" data-i18n-ph="ph_from" placeholder="City or Airport" autocomplete="off" oninput="airportSearch(this,'from-drop')" onkeydown="airportKey(event,'from-drop')"/><div class="airport-dropdown" id="from-drop"></div></div>
+      <div class="booking-field"><label data-i18n="lbl_from">From</label><select id="from" onchange="calculatePrice()"><option value="">— Select City —</option><option value="luanda">Luanda</option><option value="johannesburg">Johannesburg</option><option value="dubai">Dubai</option><option value="lisbon">Lisbon</option><option value="capetown">Cape Town</option><option value="kinshasa">Kinshasa</option><option value="lagos">Lagos</option><option value="nairobi">Nairobi</option><option value="maputo">Maputo</option><option value="saopaulo">São Paulo</option><option value="london">London</option><option value="paris">Paris</option><option value="newyork">New York</option><option value="casablanca">Casablanca</option><option value="dakar">Dakar</option></select></div>
       <div class="swap-btn" onclick="swapRoutes()" title="Swap"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="booking-field airport-wrap"><label data-i18n="lbl_to">To</label><input type="text" id="to" data-i18n-ph="ph_to" placeholder="City or Airport" autocomplete="off" oninput="airportSearch(this,'to-drop')" onkeydown="airportKey(event,'to-drop')"/><div class="airport-dropdown" id="to-drop"></div></div>
+      <div class="booking-field"><label data-i18n="lbl_to">To</label><select id="to" onchange="calculatePrice()"><option value="">— Select City —</option><option value="luanda">Luanda</option><option value="johannesburg">Johannesburg</option><option value="dubai">Dubai</option><option value="lisbon">Lisbon</option><option value="capetown">Cape Town</option><option value="kinshasa">Kinshasa</option><option value="lagos">Lagos</option><option value="nairobi">Nairobi</option><option value="maputo">Maputo</option><option value="saopaulo">São Paulo</option><option value="london">London</option><option value="paris">Paris</option><option value="newyork">New York</option><option value="casablanca">Casablanca</option><option value="dakar">Dakar</option></select></div>
       <div class="booking-field"><label data-i18n="lbl_departure">Departure</label><input type="date" id="dep-date"/></div>
       <div class="booking-field" id="return-field" style="display:none"><label data-i18n="lbl_return">Return</label><input type="date" id="ret-date"/></div>
-      <div class="booking-field"><label data-i18n="lbl_pax">Passengers</label><select id="pax"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>6</option><option>8</option><option>10</option><option>12+</option></select></div>
+      <div class="booking-field"><label data-i18n="lbl_pax">Passengers</label><select id="pax" onchange="calculatePrice()"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="6">6</option><option value="8">8</option><option value="10">10</option><option value="12">12+</option></select></div>
       <div class="booking-field"><label data-i18n="lbl_category">Category</label><select id="category"><option value="all" data-i18n="cat_all">All Types</option><option value="ultra">Ultra Long Range</option><option value="mid" data-i18n="cat_mid">Midsize Jet</option><option value="prop">Turboprop</option><option value="regional">Regional Aircraft</option><option value="heli">Helicopter</option></select></div>
     </div>
     <div class="booking-footer">
@@ -1136,6 +1157,10 @@ body:not(.scrolling) .section-title{
         <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
         <span data-i18n="search_btn">Search Flights</span>
       </button>
+    </div>
+    <!-- Price Calculator Result Box -->
+    <div id="price-estimate-box" style="display:none;margin-top:24px;background:var(--blue-ultra);border:1.5px solid var(--border);border-radius:14px;padding:28px 32px;animation:fadeSlide .3s ease;">
+      <div id="price-estimate-content"></div>
     </div>
   </div>
 </section>
@@ -1307,35 +1332,35 @@ body:not(.scrolling) .section-title{
     <div class="section-title" data-i18n-html="pricing_title">Popular Routes<br/><em>from Luanda</em></div>
     <p style="font-size:14px;color:var(--text-mid);margin-bottom:40px;max-width:600px;" data-i18n="pricing_sub">Indicative charter pricing for popular routes. Final quotes include all fees, taxes, and services. Prices shown in USD and Angolan Kwanza (AOA).</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;">
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+      <div data-price-usd="8500" style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><img src="images/seychelles.jpg" alt="Johannesburg" style="width:56px;height:56px;border-radius:10px;object-fit:cover;"/><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Johannesburg</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → JNB · ~4h flight</div></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$8,500</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
-        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 7,480,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span class="pricing-card-primary" style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$8,500 USD</span></div>
+        <div class="pricing-card-secondary" style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">(Kz 7,480,000 AOA)</div>
       </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+      <div data-price-usd="22000" style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#c8a84b,#1a3c6e);display:flex;align-items:center;justify-content:center;font-size:24px;">🏙️</div><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Dubai</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → DXB · ~8h flight</div></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$22,000</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
-        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 19,360,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span class="pricing-card-primary" style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$22,000 USD</span></div>
+        <div class="pricing-card-secondary" style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">(Kz 19,360,000 AOA)</div>
       </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+      <div data-price-usd="18500" style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#2e5fa3,#5b8dd9);display:flex;align-items:center;justify-content:center;font-size:24px;">🇵🇹</div><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Lisbon</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → LIS · ~7h flight</div></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$18,500</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
-        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 16,280,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span class="pricing-card-primary" style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$18,500 USD</span></div>
+        <div class="pricing-card-secondary" style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">(Kz 16,280,000 AOA)</div>
       </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+      <div data-price-usd="12000" style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><img src="images/fathers-day.jpg" alt="Cape Town" style="width:56px;height:56px;border-radius:10px;object-fit:cover;"/><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Cape Town</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → CPT · ~5h flight</div></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$12,000</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
-        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 10,560,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span class="pricing-card-primary" style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$12,000 USD</span></div>
+        <div class="pricing-card-secondary" style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">(Kz 10,560,000 AOA)</div>
       </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+      <div data-price-usd="5500" style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#1a3c6e,#2e5fa3);display:flex;align-items:center;justify-content:center;font-size:24px;">🇨🇩</div><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Kinshasa</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → FIH · ~1.5h flight</div></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$5,500</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
-        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 4,840,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span class="pricing-card-primary" style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$5,500 USD</span></div>
+        <div class="pricing-card-secondary" style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">(Kz 4,840,000 AOA)</div>
       </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+      <div data-price-usd="9800" style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><img src="images/sports.jpg" alt="Lagos" style="width:56px;height:56px;border-radius:10px;object-fit:cover;"/><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Lagos</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → LOS · ~3h flight</div></div></div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$9,800</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
-        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 8,624,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span class="pricing-card-primary" style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$9,800 USD</span></div>
+        <div class="pricing-card-secondary" style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">(Kz 8,624,000 AOA)</div>
       </div>
     </div>
   </div>
@@ -2826,6 +2851,7 @@ function setTrip(el,type){
 function swapRoutes(){
   const f=document.getElementById('from'),t=document.getElementById('to');
   [f.value,t.value]=[t.value,f.value];
+  calculatePrice();
 }
 
 // ═══════════════════════════════════════════════
@@ -3461,6 +3487,214 @@ document.getElementById('pay-modal').addEventListener('click',function(e){if(e.t
     });
   }
 
+})();
+
+// ═══════════════════════════════════════════════
+//  PRICE CALCULATOR / SIMULATOR
+// ═══════════════════════════════════════════════
+var routePrices = {
+  'luanda-johannesburg': 8500,
+  'luanda-dubai': 22000,
+  'luanda-lisbon': 18500,
+  'luanda-capetown': 12000,
+  'luanda-kinshasa': 5500,
+  'luanda-lagos': 9800,
+  'luanda-nairobi': 11000,
+  'luanda-maputo': 7500,
+  'luanda-saopaulo': 35000,
+  'luanda-london': 20000,
+  'luanda-paris': 19000,
+  'luanda-newyork': 42000,
+  'johannesburg-dubai': 18000,
+  'johannesburg-london': 22000,
+  'johannesburg-capetown': 4500,
+  'johannesburg-nairobi': 8000,
+  'johannesburg-luanda': 8500,
+  'dubai-london': 15000,
+  'dubai-luanda': 22000,
+  'lisbon-luanda': 18500,
+  'lagos-luanda': 9800,
+  'kinshasa-luanda': 5500,
+  'maputo-johannesburg': 4000,
+  'nairobi-johannesburg': 8000,
+  'capetown-johannesburg': 4500,
+};
+
+var cityNames = {
+  'luanda':'Luanda','johannesburg':'Johannesburg','dubai':'Dubai','lisbon':'Lisbon',
+  'capetown':'Cape Town','kinshasa':'Kinshasa','lagos':'Lagos','nairobi':'Nairobi',
+  'maputo':'Maputo','saopaulo':'São Paulo','london':'London','paris':'Paris',
+  'newyork':'New York','casablanca':'Casablanca','dakar':'Dakar'
+};
+
+var AOA_RATE = 880;
+
+function getRoutePrice(from, to) {
+  var key1 = from + '-' + to;
+  var key2 = to + '-' + from;
+  if (routePrices[key1] !== undefined) return routePrices[key1];
+  if (routePrices[key2] !== undefined) return routePrices[key2];
+  return null;
+}
+
+function getAircraftSuggestion(priceUSD) {
+  if (priceUSD <= 6000) return { name: 'Beechcraft King Air 350', type: 'Turboprop', icon: '🛩️' };
+  if (priceUSD <= 10000) return { name: 'Hawker 800XP', type: 'Midsize Jet', icon: '✈️' };
+  if (priceUSD <= 15000) return { name: 'Cessna Citation XLS', type: 'Midsize Jet', icon: '✈️' };
+  if (priceUSD <= 25000) return { name: 'Bombardier Global 6000', type: 'Ultra Long Range', icon: '✈️' };
+  return { name: 'Gulfstream G550', type: 'Ultra Long Range · Flagship', icon: '✈️' };
+}
+
+function getPaxMultiplier(pax) {
+  var n = parseInt(pax) || 4;
+  if (n <= 6) return 1.0;
+  if (n <= 10) return 1.15;
+  return 1.30;
+}
+
+function formatPriceDisplay(usdAmount) {
+  var aoaAmount = Math.round(usdAmount * AOA_RATE);
+  var usdStr = '$' + usdAmount.toLocaleString('en-US') + ' USD';
+  var aoaStr = 'Kz ' + aoaAmount.toLocaleString('pt-AO') + ' AOA';
+  if (currentPrimaryCurrency === 'AOA') {
+    return {
+      primary: aoaStr,
+      secondary: '(' + usdStr + ')',
+      primaryLabel: 'Angolan Kwanza',
+      secondaryLabel: 'US Dollars'
+    };
+  }
+  return {
+    primary: usdStr,
+    secondary: '(' + aoaStr + ')',
+    primaryLabel: 'US Dollars',
+    secondaryLabel: 'Angolan Kwanza'
+  };
+}
+
+function calculatePrice() {
+  var from = document.getElementById('from').value;
+  var to = document.getElementById('to').value;
+  var pax = document.getElementById('pax').value;
+  var box = document.getElementById('price-estimate-box');
+  var content = document.getElementById('price-estimate-content');
+
+  if (!from || !to || from === to) {
+    box.style.display = 'none';
+    return;
+  }
+
+  var basePrice = getRoutePrice(from, to);
+  box.style.display = 'block';
+
+  if (basePrice === null) {
+    // Custom route
+    content.innerHTML = '<div class="price-est-custom">' +
+      '<div style="font-size:32px;margin-bottom:12px;">🌍</div>' +
+      '<div class="price-est-custom-title">' + (cityNames[from] || from) + ' → ' + (cityNames[to] || to) + '</div>' +
+      '<div class="price-est-custom-sub">Custom route — Contact us for a personalized quote</div>' +
+      '<button class="price-est-quote-btn" onclick="window.open(\'https://wa.me/244930000000?text=Hello%20Bestfly!%20I%20need%20a%20quote%20for%20' + encodeURIComponent((cityNames[from]||from) + ' to ' + (cityNames[to]||to)) + '\',\'_blank\')">Contact Us for Quote →</button>' +
+      '</div>';
+    return;
+  }
+
+  var paxMult = getPaxMultiplier(pax);
+  var finalPrice = Math.round(basePrice * paxMult);
+  var aircraft = getAircraftSuggestion(basePrice);
+  var display = formatPriceDisplay(finalPrice);
+  var paxNote = '';
+  if (paxMult > 1.0) {
+    var pctExtra = Math.round((paxMult - 1) * 100);
+    paxNote = '<div class="price-est-pax-note">👥 +' + pctExtra + '% adjustment for ' + pax + ' passengers (base price for up to 6)</div>';
+  }
+
+  content.innerHTML =
+    '<div class="price-estimate-heading">💰 Estimated Price: ' + (cityNames[from]||from) + ' → ' + (cityNames[to]||to) + '</div>' +
+    paxNote +
+    '<div class="price-estimate-grid">' +
+      '<div class="price-est-card">' +
+        '<span class="price-est-val">' + display.primary + '</span>' +
+        '<div class="price-est-secondary">' + display.secondary + '</div>' +
+        '<div class="price-est-label">' + display.primaryLabel + '</div>' +
+      '</div>' +
+      '<div class="price-est-card">' +
+        '<div class="price-est-aircraft">' +
+          '<span class="price-est-aircraft-icon">' + aircraft.icon + '</span>' +
+          '<div>' +
+            '<div class="price-est-aircraft-name">' + aircraft.name + '</div>' +
+            '<div class="price-est-aircraft-type">' + aircraft.type + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="font-size:12px;color:var(--text-mid);">Suggested aircraft for this route</div>' +
+      '</div>' +
+    '</div>' +
+    '<button class="price-est-quote-btn" onclick="window.open(\'https://wa.me/244930000000?text=Hello%20Bestfly!%20I%20want%20an%20exact%20quote%20for%20' + encodeURIComponent((cityNames[from]||from) + ' to ' + (cityNames[to]||to) + ', ' + pax + ' passengers') + '\',\'_blank\')">Request Exact Quote →</button>' +
+    '<div class="price-est-disclaimer">Prices are estimates. Final quote depends on aircraft type, availability, and specific requirements.</div>';
+}
+
+// ═══════════════════════════════════════════════
+//  AUTO-DETECT LANGUAGE + CURRENCY BY GEOLOCATION
+// ═══════════════════════════════════════════════
+var currentPrimaryCurrency = 'USD';
+var detectedCountryCode = null;
+
+function switchLang(lang) {
+  setLang(lang);
+}
+
+function setCurrencyPrimary(code) {
+  currentPrimaryCurrency = code;
+  // Update the pricing cards in the static section
+  updatePricingCards();
+  // Re-calculate if price estimate is visible
+  calculatePrice();
+}
+
+function updatePricingCards() {
+  var pricingCards = document.querySelectorAll('[data-price-usd]');
+  pricingCards.forEach(function(card) {
+    var usd = parseInt(card.getAttribute('data-price-usd'));
+    if (!usd) return;
+    var display = formatPriceDisplay(usd);
+    var primaryEl = card.querySelector('.pricing-card-primary');
+    var secondaryEl = card.querySelector('.pricing-card-secondary');
+    if (primaryEl) primaryEl.textContent = display.primary;
+    if (secondaryEl) secondaryEl.textContent = display.secondary;
+  });
+}
+
+// IP-based geolocation auto-detection
+(function autoDetectGeo() {
+  fetch('https://ipapi.co/json/')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var country = data.country_code;
+      detectedCountryCode = country;
+
+      // Portuguese-speaking countries → PT + local currency
+      if (['AO','BR','PT','MZ','CV','GW','ST','TL'].indexOf(country) !== -1) {
+        switchLang('pt');
+        // Angola specifically → show Kwanza first
+        if (country === 'AO') {
+          setCurrencyPrimary('AOA');
+          // Also set the nav currency badge to AOA
+          activeCurrency = CURRENCIES.AOA;
+          currencyIndex = currencyOrder.indexOf('AOA');
+          document.getElementById('curr-symbol').textContent = 'Kz';
+          document.getElementById('curr-code').textContent = 'AOA';
+          renderJets(jets);
+          updatePricingCards();
+        }
+      }
+      // French-speaking African countries → FR
+      else if (['SN','CI','CM','GA','CG','CD','BF','ML','NE','TD','GN','BJ','TG','CF','DJ'].indexOf(country) !== -1) {
+        switchLang('fr');
+      }
+      // Default → English + USD for everyone else (already default)
+    })
+    .catch(function() {
+      // Silently fail — keep defaults
+    });
 })();
 
 
