@@ -987,6 +987,67 @@ body:not(.scrolling) .section-title{
 @media(max-width:900px){
   .price-estimate-grid{grid-template-columns:1fr;}
 }
+
+/* ── INQUIRY / QUOTE REQUEST FORM ── */
+.inquiry-section{padding:100px 64px;background:var(--off-white);}
+.inquiry-inner{max-width:900px;margin:0 auto;}
+.inquiry-form{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:48px;box-shadow:var(--shadow);}
+.inquiry-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.inquiry-field{margin-bottom:18px;}
+.inquiry-field label{display:block;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--blue-mid);margin-bottom:7px;}
+.inquiry-field input,.inquiry-field select,.inquiry-field textarea{width:100%;background:var(--off-white);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;transition:border-color .25s;}
+.inquiry-field input:focus,.inquiry-field select:focus,.inquiry-field textarea:focus{border-color:var(--blue-mid);background:var(--white);}
+.inquiry-field textarea{min-height:100px;resize:vertical;}
+.inquiry-submit{background:var(--blue);color:var(--white);border:none;padding:16px 40px;font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;border-radius:8px;transition:all .3s;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:10px;margin-top:8px;}
+.inquiry-submit:hover{background:var(--blue-mid);box-shadow:0 8px 24px rgba(26,60,110,.3);transform:translateY(-1px);}
+.inquiry-success{display:none;text-align:center;padding:40px 20px;}
+.inquiry-success.show{display:block;}
+.inquiry-success-icon{font-size:48px;margin-bottom:16px;}
+.inquiry-success-title{font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);margin-bottom:10px;}
+.inquiry-success-msg{font-size:14px;color:var(--text-mid);line-height:1.7;}
+@media(max-width:900px){
+  .inquiry-section{padding:60px 24px;}
+  .inquiry-form{padding:24px 20px;}
+  .inquiry-row{grid-template-columns:1fr;}
+}
+
+/* ── ENHANCED CAREERS SECTION ── */
+.careers-section{padding:100px 64px;background:var(--white);}
+.careers-inner{max-width:1160px;margin:0 auto;}
+.job-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;margin-top:40px;}
+.job-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;display:flex;flex-direction:column;}
+.job-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px);}
+.job-card-header{margin-bottom:16px;}
+.job-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:8px;line-height:1.2;}
+.job-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.job-meta-tag{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:100px;background:var(--blue-ultra);color:var(--blue-mid);border:1px solid var(--blue-pale);}
+.job-meta-tag.location{background:rgba(29,165,90,.08);color:var(--green);border-color:rgba(29,165,90,.2);}
+.job-desc{font-size:13px;color:var(--text-mid);line-height:1.7;flex:1;margin-bottom:18px;}
+.job-apply-btn{background:var(--blue);color:var(--white);border:none;padding:11px 24px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:6px;transition:all .3s;font-family:'DM Sans',sans-serif;align-self:flex-start;}
+.job-apply-btn:hover{background:var(--blue-mid);box-shadow:0 4px 16px rgba(26,60,110,.25);}
+
+/* Application Modal */
+.career-modal-overlay{position:fixed;inset:0;background:rgba(10,24,50,.6);backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s;}
+.career-modal-overlay.active{opacity:1;pointer-events:all;}
+.career-modal{background:var(--white);border-radius:20px;max-width:600px;width:92%;max-height:90vh;overflow-y:auto;transform:translateY(16px) scale(.98);transition:transform .35s;box-shadow:0 40px 80px rgba(10,24,50,.25);}
+.career-modal-overlay.active .career-modal{transform:translateY(0) scale(1);}
+.career-modal-head{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-mid) 100%);padding:32px 36px 24px;border-radius:20px 20px 0 0;display:flex;align-items:flex-start;justify-content:space-between;}
+.career-modal-title{font-family:'Playfair Display',serif;font-size:24px;color:var(--white);line-height:1.2;}
+.career-modal-subtitle{font-size:11px;color:rgba(255,255,255,.6);letter-spacing:1px;margin-top:6px;}
+.career-modal-close{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);width:36px;height:36px;border-radius:8px;font-size:16px;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;}
+.career-modal-close:hover{background:rgba(255,255,255,.2);color:var(--white);}
+.career-modal-body{padding:32px 36px;}
+.career-modal-body .inquiry-field{margin-bottom:16px;}
+.career-modal-body .inquiry-row{margin-bottom:0;}
+.career-success{display:none;text-align:center;padding:20px 0;}
+.career-success.show{display:block;}
+@media(max-width:900px){
+  .careers-section{padding:60px 24px;}
+  .job-cards{grid-template-columns:1fr;}
+  .career-modal{width:96%;}
+  .career-modal-head{padding:24px;}
+  .career-modal-body{padding:24px;}
+}
 </style>
 </head>
 <body>
@@ -1020,6 +1081,7 @@ body:not(.scrolling) .section-title{
     <a href="#services" data-i18n="nav_services">Services</a>
     <a href="#about" data-i18n="nav_about">About</a>
     <a href="#availability" data-i18n="nav_availability">Availability</a>
+    <a href="#inquiry" data-i18n="nav_inquiry">Request a Quote</a>
     <a href="#careers" data-i18n="nav_careers">Careers</a>
     <a href="#contact" data-i18n="nav_contact">Contact</a>
   </div>
@@ -1366,6 +1428,104 @@ body:not(.scrolling) .section-title{
   </div>
 </section>
 
+<!-- INQUIRY / QUOTE REQUEST FORM -->
+<section id="inquiry" class="inquiry-section">
+  <div class="inquiry-inner">
+    <div class="sr">
+      <div class="section-label" data-i18n="inquiry_label">Request a Quote</div>
+      <div class="section-title" data-i18n-html="inquiry_title">Personalized<br/><em>Charter Quote</em></div>
+    </div>
+    <p style="font-size:14px;color:var(--text-mid);margin-bottom:32px;max-width:600px;" data-i18n="inquiry_sub">Fill in the details below and our team will provide you with a personalized quote within 24 hours.</p>
+    <div class="inquiry-form" id="inquiry-form-wrap">
+      <form id="inquiry-form" onsubmit="submitInquiry(event)">
+        <div class="inquiry-row">
+          <div class="inquiry-field">
+            <label data-i18n="inq_fullname">Full Name</label>
+            <input type="text" id="inq-name" required data-i18n-ph="ph_full_name" placeholder="Full name"/>
+          </div>
+          <div class="inquiry-field">
+            <label data-i18n="inq_email">Email</label>
+            <input type="email" id="inq-email" required placeholder="email@example.com"/>
+          </div>
+        </div>
+        <div class="inquiry-row">
+          <div class="inquiry-field">
+            <label data-i18n="inq_phone">Phone / WhatsApp</label>
+            <input type="tel" id="inq-phone" required placeholder="+244 9XX XXX XXX"/>
+          </div>
+          <div class="inquiry-field">
+            <label data-i18n="inq_departure">Departure City</label>
+            <select id="inq-from" required>
+              <option value="">— Select —</option>
+              <option value="luanda">Luanda</option>
+              <option value="johannesburg">Johannesburg</option>
+              <option value="dubai">Dubai</option>
+              <option value="lisbon">Lisbon</option>
+              <option value="capetown">Cape Town</option>
+              <option value="kinshasa">Kinshasa</option>
+              <option value="lagos">Lagos</option>
+              <option value="nairobi">Nairobi</option>
+              <option value="maputo">Maputo</option>
+              <option value="saopaulo">São Paulo</option>
+              <option value="london">London</option>
+              <option value="paris">Paris</option>
+              <option value="newyork">New York</option>
+              <option value="casablanca">Casablanca</option>
+              <option value="dakar">Dakar</option>
+            </select>
+          </div>
+        </div>
+        <div class="inquiry-row">
+          <div class="inquiry-field">
+            <label data-i18n="inq_destination">Destination</label>
+            <select id="inq-to" required>
+              <option value="">— Select —</option>
+              <option value="luanda">Luanda</option>
+              <option value="johannesburg">Johannesburg</option>
+              <option value="dubai">Dubai</option>
+              <option value="lisbon">Lisbon</option>
+              <option value="capetown">Cape Town</option>
+              <option value="kinshasa">Kinshasa</option>
+              <option value="lagos">Lagos</option>
+              <option value="nairobi">Nairobi</option>
+              <option value="maputo">Maputo</option>
+              <option value="saopaulo">São Paulo</option>
+              <option value="london">London</option>
+              <option value="paris">Paris</option>
+              <option value="newyork">New York</option>
+              <option value="casablanca">Casablanca</option>
+              <option value="dakar">Dakar</option>
+            </select>
+          </div>
+          <div class="inquiry-field">
+            <label data-i18n="inq_date">Preferred Date</label>
+            <input type="date" id="inq-date" required/>
+          </div>
+        </div>
+        <div class="inquiry-row">
+          <div class="inquiry-field">
+            <label data-i18n="inq_passengers">Number of Passengers</label>
+            <input type="number" id="inq-pax" min="1" max="14" value="1" required/>
+          </div>
+          <div class="inquiry-field" style="visibility:hidden;">
+            <!-- spacer -->
+          </div>
+        </div>
+        <div class="inquiry-field">
+          <label data-i18n="inq_notes">Special Requirements / Notes</label>
+          <textarea id="inq-notes" data-i18n-ph="inq_notes_ph" placeholder="Any special requirements, dietary needs, luggage details..."></textarea>
+        </div>
+        <button type="submit" class="inquiry-submit" data-i18n="inq_submit">✈ Request Quote</button>
+      </form>
+      <div class="inquiry-success" id="inquiry-success">
+        <div class="inquiry-success-icon">✅</div>
+        <div class="inquiry-success-title" data-i18n="inq_success_title">Thank You!</div>
+        <p class="inquiry-success-msg" data-i18n="inq_success_msg">Your inquiry has been received. Our team will contact you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FLEET AVAILABILITY (Google Sheets Integration) -->
 <section id="availability" style="padding:100px 64px;background:var(--white);">
   <div style="max-width:1160px;margin:0 auto;">
@@ -1441,55 +1601,73 @@ body:not(.scrolling) .section-title{
   </div>
 </section>
 
-<!-- CAREERS (Google Sheets Integration) -->
-<section id="careers" style="padding:100px 64px;background:var(--white);">
-  <div style="max-width:1160px;margin:0 auto;">
-    <div class="section-label" data-i18n="careers_label">Join Our Team</div>
-    <div class="section-title" data-i18n-html="careers_title">Careers at<br/><em>Bestfly</em></div>
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px;">
-      <span style="font-size:13px;color:var(--text-mid);" data-i18n="careers_powered">Open positions powered by</span>
-      <span style="background:var(--blue-ultra);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--blue);letter-spacing:0.5px;display:inline-flex;align-items:center;gap:6px;">📊 Google Sheets</span>
+<!-- ENHANCED CAREERS / JOB CAREER SECTION -->
+<section id="careers" class="careers-section">
+  <div class="careers-inner">
+    <div class="sr">
+      <div class="section-label" data-i18n="careers_label">Job Career</div>
+      <div class="section-title" data-i18n-html="careers_title">Careers at<br/><em>Bestfly</em></div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
-        <div>
-          <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:4px;">Captain — Global Express</div>
-          <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;align-items:center;"><span>📍 Luanda, Angola</span><span>✈️ Heavy Jet</span><span style="background:rgba(29,165,90,.1);color:var(--green);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;">OPEN</span></div>
-        </div>
-        <button class="book-btn" onclick="window.open('mailto:careers@bestfly.aero?subject=Application: Captain - Global Express','_blank')" data-i18n="btn_apply">Apply →</button>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
-        <div>
-          <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:4px;">First Officer — Challenger 350</div>
-          <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;align-items:center;"><span>📍 Luanda, Angola</span><span>✈️ Super Mid Jet</span><span style="background:rgba(29,165,90,.1);color:var(--green);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;">OPEN</span></div>
-        </div>
-        <button class="book-btn" onclick="window.open('mailto:careers@bestfly.aero?subject=Application: First Officer - Challenger 350','_blank')" data-i18n="btn_apply">Apply →</button>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
-        <div>
-          <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:4px;">Cabin Crew</div>
-          <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;align-items:center;"><span>📍 Luanda, Angola</span><span>🛫 All Fleet</span><span style="background:rgba(29,165,90,.1);color:var(--green);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;">OPEN</span></div>
-        </div>
-        <button class="book-btn" onclick="window.open('mailto:careers@bestfly.aero?subject=Application: Cabin Crew','_blank')" data-i18n="btn_apply">Apply →</button>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
-        <div>
-          <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:4px;">Ground Operations Manager</div>
-          <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;align-items:center;"><span>📍 Luanda, Angola</span><span>🏢 Operations</span><span style="background:rgba(29,165,90,.1);color:var(--green);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;">OPEN</span></div>
-        </div>
-        <button class="book-btn" onclick="window.open('mailto:careers@bestfly.aero?subject=Application: Ground Operations Manager','_blank')" data-i18n="btn_apply">Apply →</button>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
-        <div>
-          <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:4px;">Aircraft Maintenance Engineer</div>
-          <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;align-items:center;"><span>📍 Johannesburg, South Africa</span><span>🔧 Engineering</span><span style="background:rgba(29,165,90,.1);color:var(--green);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;">OPEN</span></div>
-        </div>
-        <button class="book-btn" onclick="window.open('mailto:careers@bestfly.aero?subject=Application: Aircraft Maintenance Engineer','_blank')" data-i18n="btn_apply">Apply →</button>
-      </div>
+    <p style="font-size:14px;color:var(--text-mid);margin-bottom:12px;max-width:700px;" data-i18n="careers_intro">Join one of Africa's most dynamic aviation companies. We're looking for talented professionals to help us grow.</p>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+      <span style="font-size:13px;color:var(--text-mid);" data-i18n="careers_openings_count">6 Open Positions</span>
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:glow 2s infinite;"></span>
     </div>
-    <div style="margin-top:24px;font-size:12px;color:var(--text-muted);letter-spacing:0.5px;" data-i18n="careers_note">All positions include competitive salary, travel benefits, and professional development. Send CV to careers@bestfly.aero</div>
+    <div class="job-cards sr-stagger" id="job-cards-grid"></div>
+    <div style="margin-top:32px;font-size:12px;color:var(--text-muted);letter-spacing:0.5px;" data-i18n="careers_note">All positions include competitive salary, travel benefits, and professional development. Send CV to careers@bestfly.aero</div>
   </div>
 </section>
+
+<!-- CAREER APPLICATION MODAL -->
+<div class="career-modal-overlay" id="career-modal">
+  <div class="career-modal">
+    <div class="career-modal-head">
+      <div>
+        <div class="career-modal-title" data-i18n="career_apply_title">Apply Now</div>
+        <div class="career-modal-subtitle" id="career-modal-position"></div>
+      </div>
+      <button class="career-modal-close" onclick="closeCareerModal()">✕</button>
+    </div>
+    <div class="career-modal-body">
+      <form id="career-form" onsubmit="submitCareerForm(event)">
+        <div class="inquiry-row">
+          <div class="inquiry-field">
+            <label data-i18n="inq_fullname">Full Name</label>
+            <input type="text" id="career-name" required data-i18n-ph="ph_full_name" placeholder="Full name"/>
+          </div>
+          <div class="inquiry-field">
+            <label data-i18n="inq_email">Email</label>
+            <input type="email" id="career-email" required placeholder="email@example.com"/>
+          </div>
+        </div>
+        <div class="inquiry-row">
+          <div class="inquiry-field">
+            <label data-i18n="inq_phone">Phone</label>
+            <input type="tel" id="career-phone" required placeholder="+244 9XX XXX XXX"/>
+          </div>
+          <div class="inquiry-field">
+            <label data-i18n="career_position">Position Applied For</label>
+            <input type="text" id="career-position-field" readonly style="background:var(--blue-ultra);color:var(--blue);font-weight:600;"/>
+          </div>
+        </div>
+        <div class="inquiry-field">
+          <label data-i18n="career_cv">Upload CV / Resume</label>
+          <input type="file" id="career-cv" accept=".pdf,.doc,.docx" required style="padding:10px;"/>
+        </div>
+        <div class="inquiry-field">
+          <label data-i18n="career_cover">Cover Letter</label>
+          <textarea id="career-cover" rows="5" data-i18n-ph="career_cover_ph" placeholder="Tell us why you're a great fit for this role..."></textarea>
+        </div>
+        <button type="submit" class="inquiry-submit" data-i18n="career_submit_btn">📄 Submit Application</button>
+      </form>
+      <div class="career-success" id="career-success">
+        <div style="font-size:48px;margin-bottom:16px;">🎉</div>
+        <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);margin-bottom:10px;" data-i18n="career_success_title">Application Submitted!</div>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.7;" data-i18n="career_success_msg">Thank you for your interest in joining Bestfly. Our HR team will review your application and get back to you shortly.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer id="contact">
@@ -1888,6 +2066,14 @@ const T = {
     event_carnival:"Carnival Celebration",event_sports:"Sports Sponsorship",event_women:"Women in Aviation",event_legacy:"Legacy & Family",
     careers_label:"Join Our Team",careers_title:"Careers at<br/><em>Bestfly</em>",careers_powered:"Open positions powered by",careers_note:"All positions include competitive salary, travel benefits, and professional development. Send CV to careers@bestfly.aero",
     btn_apply:"Apply →",
+    nav_inquiry:"Request a Quote",
+    inquiry_label:"Request a Quote",inquiry_title:"Personalized<br/><em>Charter Quote</em>",inquiry_sub:"Fill in the details below and our team will provide you with a personalized quote within 24 hours.",
+    inq_fullname:"Full Name",inq_email:"Email",inq_phone:"Phone / WhatsApp",inq_departure:"Departure City",inq_destination:"Destination",inq_date:"Preferred Date",inq_passengers:"Number of Passengers",inq_notes:"Special Requirements / Notes",inq_notes_ph:"Any special requirements, dietary needs, luggage details...",inq_submit:"✈ Request Quote",
+    inq_success_title:"Thank You!",inq_success_msg:"Your inquiry has been received. Our team will contact you within 24 hours.",
+    careers_intro:"Join one of Africa's most dynamic aviation companies. We're looking for talented professionals to help us grow.",
+    careers_openings_count:"6 Open Positions",
+    career_apply_title:"Apply Now",career_position:"Position Applied For",career_cv:"Upload CV / Resume",career_cover:"Cover Letter",career_cover_ph:"Tell us why you're a great fit for this role...",career_submit_btn:"📄 Submit Application",
+    career_success_title:"Application Submitted!",career_success_msg:"Thank you for your interest in joining Bestfly. Our HR team will review your application and get back to you shortly.",
   },
   pt:{
     nav_fleet:"Frota",nav_services:"Serviços",nav_about:"Sobre",nav_contact:"Contacto",nav_book:"Reservar",
@@ -1944,6 +2130,15 @@ const T = {
     event_carnival:"Celebração de Carnaval",event_sports:"Patrocínio Desportivo",event_women:"Mulheres na Aviação",event_legacy:"Legado & Família",
     careers_label:"Junte-se à Equipa",careers_title:"Carreiras na<br/><em>Bestfly</em>",careers_powered:"Posições abertas alimentadas por",careers_note:"Todas as posições incluem salário competitivo, benefícios de viagem e desenvolvimento profissional. Envie CV para careers@bestfly.aero",
     btn_apply:"Candidatar →",
+    nav_inquiry:"Solicitar Orçamento",
+    inquiry_label:"Solicitar Orçamento",inquiry_title:"Orçamento<br/><em>Personalizado</em>",inquiry_sub:"Preencha os detalhes abaixo e a nossa equipa fornecerá um orçamento personalizado dentro de 24 horas.",
+    inq_fullname:"Nome Completo",inq_email:"Email",inq_phone:"Telefone / WhatsApp",inq_departure:"Cidade de Partida",inq_destination:"Destino",inq_date:"Data Preferida",inq_passengers:"Número de Passageiros",inq_notes:"Requisitos Especiais / Notas",inq_notes_ph:"Quaisquer requisitos especiais, necessidades alimentares, detalhes de bagagem...",inq_submit:"✈ Solicitar Orçamento",
+    inq_success_title:"Obrigado!",inq_success_msg:"O seu pedido foi recebido. A nossa equipa entrará em contacto dentro de 24 horas.",
+    careers_label:"Carreira Profissional",careers_title:"Carreiras na<br/><em>Bestfly</em>",
+    careers_intro:"Junte-se a uma das empresas de aviação mais dinâmicas de África. Procuramos profissionais talentosos para nos ajudar a crescer.",
+    careers_openings_count:"6 Posições Abertas",
+    career_apply_title:"Candidatar-se",career_position:"Posição a que se Candidata",career_cv:"Carregar CV / Currículo",career_cover:"Carta de Motivação",career_cover_ph:"Diga-nos porque é a pessoa ideal para esta função...",career_submit_btn:"📄 Submeter Candidatura",
+    career_success_title:"Candidatura Submetida!",career_success_msg:"Obrigado pelo seu interesse em juntar-se à Bestfly. A nossa equipa de RH analisará a sua candidatura e entrará em contacto brevemente.",
   },
   fr:{
     nav_fleet:"Flotte",nav_services:"Services",nav_about:"À propos",nav_contact:"Contact",nav_book:"Réserver",
@@ -2282,6 +2477,8 @@ function applyTranslations() {
   if (passengerCount > 0) buildPassportBlocks(passengerCount);
   // Update pax counter
   updatePaxLabel();
+  // Re-render job cards for language
+  renderJobCards();
 }
 
 // ═══════════════════════════════════════════════
@@ -3154,6 +3351,8 @@ window.addEventListener('DOMContentLoaded',()=>{
 
   // Render all jets on load
   renderJets(jets);
+  // Render job cards
+  renderJobCards();
 
   const today=new Date().toISOString().split('T')[0];
   document.getElementById('dep-date').value=today;
@@ -3631,6 +3830,153 @@ function calculatePrice() {
     '<button class="price-est-quote-btn" onclick="window.open(\'https://wa.me/244930000000?text=Hello%20Bestfly!%20I%20want%20an%20exact%20quote%20for%20' + encodeURIComponent((cityNames[from]||from) + ' to ' + (cityNames[to]||to) + ', ' + pax + ' passengers') + '\',\'_blank\')">Request Exact Quote →</button>' +
     '<div class="price-est-disclaimer">Prices are estimates. Final quote depends on aircraft type, availability, and specific requirements.</div>';
 }
+
+// ═══════════════════════════════════════════════
+//  INQUIRY / QUOTE REQUEST FORM
+// ═══════════════════════════════════════════════
+function submitInquiry(e) {
+  e.preventDefault();
+  var form = document.getElementById('inquiry-form');
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+  // Demo: hide form, show success
+  form.style.display = 'none';
+  document.getElementById('inquiry-success').classList.add('show');
+}
+
+// ═══════════════════════════════════════════════
+//  ENHANCED CAREERS / JOB CAREER
+// ═══════════════════════════════════════════════
+var JOB_OPENINGS = [
+  {
+    id: 1,
+    title_en: 'Captain — Bombardier Global Express',
+    title_pt: 'Capitão — Bombardier Global Express',
+    location: 'Luanda',
+    department_en: 'Flight Operations',
+    department_pt: 'Operações de Voo',
+    type: 'Full-time',
+    desc_en: 'Lead flight operations on our flagship Global Express aircraft. Minimum 5,000 hours total time, type rating preferred.',
+    desc_pt: 'Liderar operações de voo na nossa aeronave flagship Global Express. Mínimo 5.000 horas totais, habilitação de tipo preferencial.'
+  },
+  {
+    id: 2,
+    title_en: 'First Officer — Challenger 350',
+    title_pt: 'Primeiro Oficial — Challenger 350',
+    location: 'Luanda',
+    department_en: 'Flight Operations',
+    department_pt: 'Operações de Voo',
+    type: 'Full-time',
+    desc_en: 'Join our Challenger 350 crew. Minimum 2,500 hours total time, multi-engine rated.',
+    desc_pt: 'Junte-se à nossa tripulação do Challenger 350. Mínimo 2.500 horas totais, habilitação multi-motor.'
+  },
+  {
+    id: 3,
+    title_en: 'Senior Cabin Crew',
+    title_pt: 'Tripulação de Cabine Sénior',
+    location: 'Luanda',
+    department_en: 'In-Flight Services',
+    department_pt: 'Serviços de Bordo',
+    type: 'Full-time',
+    desc_en: 'Deliver exceptional in-flight hospitality. VIP service experience required.',
+    desc_pt: 'Proporcionar hospitalidade excecional a bordo. Experiência em serviço VIP necessária.'
+  },
+  {
+    id: 4,
+    title_en: 'Aircraft Maintenance Engineer',
+    title_pt: 'Engenheiro de Manutenção de Aeronaves',
+    location: 'Johannesburg',
+    department_en: 'Maintenance',
+    department_pt: 'Manutenção',
+    type: 'Full-time',
+    desc_en: 'B1/B2 licensed engineer for line and base maintenance on Bombardier fleet.',
+    desc_pt: 'Engenheiro licenciado B1/B2 para manutenção de linha e base na frota Bombardier.'
+  },
+  {
+    id: 5,
+    title_en: 'Ground Operations Manager',
+    title_pt: 'Gestor de Operações Terrestres',
+    location: 'Luanda',
+    department_en: 'Ground Operations',
+    department_pt: 'Operações Terrestres',
+    type: 'Full-time',
+    desc_en: 'Oversee ground handling, fueling, and passenger services across our African network.',
+    desc_pt: 'Supervisionar o handling terrestre, abastecimento e serviços de passageiros em toda a nossa rede africana.'
+  },
+  {
+    id: 6,
+    title_en: 'Sales & Charter Manager',
+    title_pt: 'Gestor de Vendas & Charter',
+    location: 'Dubai',
+    department_en: 'Commercial',
+    department_pt: 'Comercial',
+    type: 'Full-time',
+    desc_en: 'Drive charter sales growth in the Middle East region. Aviation sales experience required.',
+    desc_pt: 'Impulsionar o crescimento das vendas de charter na região do Médio Oriente. Experiência em vendas de aviação necessária.'
+  }
+];
+
+function renderJobCards() {
+  var grid = document.getElementById('job-cards-grid');
+  if (!grid) return;
+  var isPt = currentLang === 'pt';
+  grid.innerHTML = JOB_OPENINGS.map(function(job) {
+    var title = isPt ? job.title_pt : job.title_en;
+    var dept = isPt ? job.department_pt : job.department_en;
+    var desc = isPt ? job.desc_pt : job.desc_en;
+    var applyText = isPt ? 'Candidatar-se' : 'Apply Now';
+    return '<div class="job-card">' +
+      '<div class="job-card-header">' +
+        '<div class="job-title">' + title + '</div>' +
+        '<div class="job-meta">' +
+          '<span class="job-meta-tag location">📍 ' + job.location + '</span>' +
+          '<span class="job-meta-tag">🏢 ' + dept + '</span>' +
+          '<span class="job-meta-tag">⏰ ' + job.type + '</span>' +
+        '</div>' +
+      '</div>' +
+      '<p class="job-desc">' + desc + '</p>' +
+      '<button class="job-apply-btn" onclick="openCareerModal(' + job.id + ')">' + applyText + ' →</button>' +
+    '</div>';
+  }).join('');
+}
+
+function openCareerModal(jobId) {
+  var job = JOB_OPENINGS.find(function(j) { return j.id === jobId; });
+  if (!job) return;
+  var isPt = currentLang === 'pt';
+  var title = isPt ? job.title_pt : job.title_en;
+  document.getElementById('career-modal-position').textContent = title + ' — ' + job.location;
+  document.getElementById('career-position-field').value = title;
+  // Reset form
+  document.getElementById('career-form').reset();
+  document.getElementById('career-position-field').value = title;
+  document.getElementById('career-form').style.display = '';
+  document.getElementById('career-success').classList.remove('show');
+  document.getElementById('career-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCareerModal() {
+  document.getElementById('career-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function submitCareerForm(e) {
+  e.preventDefault();
+  var form = document.getElementById('career-form');
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+  form.style.display = 'none';
+  document.getElementById('career-success').classList.add('show');
+}
+
+// Close career modal on overlay click
+document.addEventListener('DOMContentLoaded', function() {
+  var overlay = document.getElementById('career-modal');
+  if (overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeCareerModal();
+    });
+  }
+});
 
 // ═══════════════════════════════════════════════
 //  AUTO-DETECT LANGUAGE + CURRENCY BY GEOLOCATION
