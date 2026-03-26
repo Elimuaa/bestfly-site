@@ -45,7 +45,7 @@ nav.scrolled .nav-cta{background:var(--blue);color:var(--white);}
 /* Real G550 photo background with Ken Burns takeoff effect */
 .hero-photo-bg{
   position:absolute;inset:0;z-index:0;
-  background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/2010-07-21_G550_NetJets_CS-DKE_EDDF_01.jpg/1280px-2010-07-21_G550_NetJets_CS-DKE_EDDF_01.jpg');
+  background-image:url('images/jet-tarmac.jpg');
   background-size:cover;background-position:center 40%;
   animation:kenBurns 18s ease-in-out infinite alternate;
   transform-origin:center bottom;
@@ -522,22 +522,22 @@ html.lenis{ height:auto; }
 
 /* ── Scroll reveal ── */
 .sr{
-  opacity:0;
-  transform:translateY(36px);
+  opacity:1;
+  transform:translateY(0);
   transition:opacity .75s cubic-bezier(.25,.46,.45,.94),
              transform .75s cubic-bezier(.25,.46,.45,.94);
   will-change:opacity,transform;
 }
 .sr.in{ opacity:1;transform:translateY(0); }
-.sr-left{ opacity:0;transform:translateX(-40px); transition:opacity .75s cubic-bezier(.25,.46,.45,.94),transform .75s; }
+.sr-left{ opacity:1;transform:translateX(0); transition:opacity .75s cubic-bezier(.25,.46,.45,.94),transform .75s; }
 .sr-left.in{ opacity:1;transform:translateX(0); }
-.sr-right{ opacity:0;transform:translateX(40px); transition:opacity .75s cubic-bezier(.25,.46,.45,.94),transform .75s; }
+.sr-right{ opacity:1;transform:translateX(0); transition:opacity .75s cubic-bezier(.25,.46,.45,.94),transform .75s; }
 .sr-right.in{ opacity:1;transform:translateX(0); }
-.sr-scale{ opacity:0;transform:scale(.92); transition:opacity .7s ease,transform .7s ease; }
+.sr-scale{ opacity:1;transform:scale(1); transition:opacity .7s ease,transform .7s ease; }
 .sr-scale.in{ opacity:1;transform:scale(1); }
 /* Staggered children */
 .sr-stagger>*{
-  opacity:0;transform:translateY(28px);
+  opacity:1;transform:translateY(0);
   transition:opacity .6s cubic-bezier(.25,.46,.45,.94),transform .6s cubic-bezier(.25,.46,.45,.94);
 }
 .sr-stagger.in>*:nth-child(1){opacity:1;transform:none;transition-delay:.05s}
@@ -552,7 +552,7 @@ html.lenis{ height:auto; }
 /* ── Split text heading ── */
 .split-word span{
   display:inline-block;
-  opacity:0;transform:translateY(100%);overflow:hidden;
+  opacity:1;transform:translateY(0);overflow:hidden;
   transition:opacity .55s cubic-bezier(.76,0,.24,1),transform .55s cubic-bezier(.76,0,.24,1);
 }
 .split-word.in span{ opacity:1;transform:translateY(0); }
@@ -594,7 +594,7 @@ html.lenis{ height:auto; }
 /* ── Hover text mask reveal (images) ── */
 .img-hover-reveal{
   overflow:hidden;
-  clip-path:inset(0 100% 0 0);
+  clip-path:inset(0 0% 0 0);
   transition:clip-path .8s cubic-bezier(.76,0,.24,1);
 }
 .img-hover-reveal.in{ clip-path:inset(0 0% 0 0); }
@@ -992,12 +992,15 @@ body:not(.scrolling) .section-title{
 
 <!-- NAV -->
 <nav id="navbar">
-  <div class="nav-logo">BEST<span>FLY</span></div>
+  <div class="nav-logo"><img src="images/logo.jpg" alt="Bestfly" style="height:36px;vertical-align:middle;margin-right:8px;border-radius:4px;"/>BEST<span>FLY</span></div>
   <div class="nav-links">
     <a href="#fleet" data-i18n="nav_fleet">Fleet</a>
+    <a href="#destinations" data-i18n="nav_destinations">Destinations</a>
     <a href="#services" data-i18n="nav_services">Services</a>
     <a href="#about" data-i18n="nav_about">About</a>
-    <a href="#" data-i18n="nav_contact">Contact</a>
+    <a href="#availability" data-i18n="nav_availability">Availability</a>
+    <a href="#careers" data-i18n="nav_careers">Careers</a>
+    <a href="#contact" data-i18n="nav_contact">Contact</a>
   </div>
   <div class="nav-right">
     <div class="currency-badge" id="currency-badge" onclick="cycleCurrency()" title="Click to change currency"><span class="currency-symbol" id="curr-symbol">$</span><span id="curr-code">USD</span></div>
@@ -1214,8 +1217,8 @@ body:not(.scrolling) .section-title{
 <!-- WHY -->
 <section class="why-section" id="about">
   <div class="why-inner">
-    <div class="why-img">
-      <div class="why-img-big">BF</div>
+    <div class="why-img" style="background:url('images/employee.jpg') center/cover no-repeat;">
+      <div style="position:absolute;inset:0;background:rgba(26,60,110,0.7);border-radius:20px;"></div>
       <div style="position:relative;z-index:2;padding:40px;text-align:center;">
         <div class="why-quote" data-i18n="quote">"The sky is not the limit — it's the beginning."</div>
         <div class="why-author">Bestfly · Angola · Est. 2004</div>
@@ -1250,7 +1253,7 @@ body:not(.scrolling) .section-title{
       </div>
     </div>
     <div class="showcase-img-wrap sr-right">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/2010-07-21_G550_NetJets_CS-DKE_EDDF_01.jpg/960px-2010-07-21_G550_NetJets_CS-DKE_EDDF_01.jpg" alt="Gulfstream G550 — Bestfly fleet" loading="lazy"/>
+      <img src="images/jet-clouds.jpg" alt="Gulfstream G550 — Bestfly fleet" loading="lazy"/>
       <div class="showcase-img-overlay"></div>
       <div class="showcase-tag">
         <div class="showcase-tag-name">Gulfstream G550</div>
@@ -1261,7 +1264,7 @@ body:not(.scrolling) .section-title{
 </section>
 
 <!-- JESKO-STYLE DESTINATIONS -->
-<section class="destinations-section" id="global">
+<section class="destinations-section" id="destinations">
   <div class="dest-globe"></div>
   <div class="dest-header sr">
     <h2 class="dest-headline">Fly <em>anywhere</em></h2>
@@ -1297,10 +1300,176 @@ body:not(.scrolling) .section-title{
   </div>
 </section>
 
+<!-- FLIGHT PRICING -->
+<section id="pricing" style="padding:100px 64px;background:var(--off-white);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="section-label" data-i18n="pricing_label">Charter Pricing</div>
+    <div class="section-title" data-i18n-html="pricing_title">Popular Routes<br/><em>from Luanda</em></div>
+    <p style="font-size:14px;color:var(--text-mid);margin-bottom:40px;max-width:600px;" data-i18n="pricing_sub">Indicative charter pricing for popular routes. Final quotes include all fees, taxes, and services. Prices shown in USD and Angolan Kwanza (AOA).</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><img src="images/seychelles.jpg" alt="Johannesburg" style="width:56px;height:56px;border-radius:10px;object-fit:cover;"/><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Johannesburg</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → JNB · ~4h flight</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$8,500</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
+        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 7,480,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#c8a84b,#1a3c6e);display:flex;align-items:center;justify-content:center;font-size:24px;">🏙️</div><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Dubai</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → DXB · ~8h flight</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$22,000</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
+        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 19,360,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#2e5fa3,#5b8dd9);display:flex;align-items:center;justify-content:center;font-size:24px;">🇵🇹</div><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Lisbon</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → LIS · ~7h flight</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$18,500</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
+        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 16,280,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><img src="images/fathers-day.jpg" alt="Cape Town" style="width:56px;height:56px;border-radius:10px;object-fit:cover;"/><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Cape Town</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → CPT · ~5h flight</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$12,000</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
+        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 10,560,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#1a3c6e,#2e5fa3);display:flex;align-items:center;justify-content:center;font-size:24px;">🇨🇩</div><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Kinshasa</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → FIH · ~1.5h flight</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$5,500</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
+        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 4,840,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><img src="images/sports.jpg" alt="Lagos" style="width:56px;height:56px;border-radius:10px;object-fit:cover;"/><div><div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);">Luanda → Lagos</div><div style="font-size:11px;color:var(--text-muted);letter-spacing:1px;">LAD → LOS · ~3h flight</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-top:1px solid var(--border);"><span style="font-family:'Playfair Display',serif;font-size:28px;color:var(--blue);font-weight:500;">$9,800</span><span style="font-size:12px;color:var(--text-muted);">USD</span></div>
+        <div style="font-size:14px;color:var(--accent);font-weight:600;letter-spacing:0.5px;">Kz 8,624,000 <span style="font-size:11px;color:var(--text-muted);font-weight:400;">AOA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET AVAILABILITY (Google Sheets Integration) -->
+<section id="availability" style="padding:100px 64px;background:var(--white);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="section-label" data-i18n="avail_label">Fleet Availability</div>
+    <div class="section-title" data-i18n-html="avail_title">Real-Time<br/><em>Aircraft Status</em></div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px;">
+      <span style="font-size:13px;color:var(--text-mid);" data-i18n="avail_powered">Powered by</span>
+      <span style="background:var(--blue-ultra);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--blue);letter-spacing:0.5px;display:inline-flex;align-items:center;gap:6px;">📊 Google Sheets</span>
+      <span style="font-size:11px;color:var(--text-muted);letter-spacing:1px;" data-i18n="avail_live">· Live Data Feed</span>
+    </div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:14px;">
+        <thead>
+          <tr style="background:var(--blue);color:var(--white);">
+            <th style="padding:16px 20px;text-align:left;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;" data-i18n="th_aircraft">Aircraft</th>
+            <th style="padding:16px 20px;text-align:left;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;" data-i18n="th_type">Type</th>
+            <th style="padding:16px 20px;text-align:center;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;" data-i18n="th_capacity">Capacity</th>
+            <th style="padding:16px 20px;text-align:center;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;" data-i18n="th_status">Status</th>
+            <th style="padding:16px 20px;text-align:left;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;" data-i18n="th_base">Base</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:16px 20px;font-weight:600;color:var(--blue);">✈️ Global Express</td>
+            <td style="padding:16px 20px;color:var(--text-mid);">Heavy Jet</td>
+            <td style="padding:16px 20px;text-align:center;font-family:'Playfair Display',serif;font-size:18px;color:var(--blue);">14</td>
+            <td style="padding:16px 20px;text-align:center;"><span style="background:rgba(29,165,90,.12);color:var(--green);border:1.5px solid rgba(29,165,90,.25);padding:5px 14px;border-radius:100px;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">● Available</span></td>
+            <td style="padding:16px 20px;color:var(--text-mid);">🇦🇴 Luanda</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:var(--blue-ultra);">
+            <td style="padding:16px 20px;font-weight:600;color:var(--blue);">✈️ Challenger 350</td>
+            <td style="padding:16px 20px;color:var(--text-mid);">Super Mid</td>
+            <td style="padding:16px 20px;text-align:center;font-family:'Playfair Display',serif;font-size:18px;color:var(--blue);">10</td>
+            <td style="padding:16px 20px;text-align:center;"><span style="background:rgba(91,141,217,.12);color:var(--blue-mid);border:1.5px solid rgba(91,141,217,.25);padding:5px 14px;border-radius:100px;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">✈ In Flight</span></td>
+            <td style="padding:16px 20px;color:var(--text-mid);">🇦🇪 Dubai</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:16px 20px;font-weight:600;color:var(--blue);">✈️ Legacy 600</td>
+            <td style="padding:16px 20px;color:var(--text-mid);">Mid Jet</td>
+            <td style="padding:16px 20px;text-align:center;font-family:'Playfair Display',serif;font-size:18px;color:var(--blue);">13</td>
+            <td style="padding:16px 20px;text-align:center;"><span style="background:rgba(29,165,90,.12);color:var(--green);border:1.5px solid rgba(29,165,90,.25);padding:5px 14px;border-radius:100px;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">● Available</span></td>
+            <td style="padding:16px 20px;color:var(--text-mid);">🇿🇦 Johannesburg</td>
+          </tr>
+          <tr>
+            <td style="padding:16px 20px;font-weight:600;color:var(--blue);">✈️ Phenom 300</td>
+            <td style="padding:16px 20px;color:var(--text-mid);">Light Jet</td>
+            <td style="padding:16px 20px;text-align:center;font-family:'Playfair Display',serif;font-size:18px;color:var(--blue);">8</td>
+            <td style="padding:16px 20px;text-align:center;"><span style="background:rgba(214,58,58,.08);color:var(--red);border:1.5px solid rgba(214,58,58,.2);padding:5px 14px;border-radius:100px;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">🔧 Maintenance</span></td>
+            <td style="padding:16px 20px;color:var(--text-mid);">🇵🇹 Lisbon</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:20px;display:flex;align-items:center;gap:12px;">
+      <span style="font-size:11px;color:var(--text-muted);letter-spacing:1px;" data-i18n="avail_updated">Last updated: Live</span>
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:glow 2s infinite;"></span>
+      <span style="font-size:11px;color:var(--green);font-weight:600;">LIVE</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY / EVENTS GALLERY -->
+<section style="padding:80px 64px;background:var(--off-white);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="section-label" data-i18n="community_label">Community & Events</div>
+    <div class="section-title" data-i18n-html="community_title">Beyond Aviation,<br/><em>Building Community</em></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:40px;">
+      <div style="border-radius:14px;overflow:hidden;position:relative;height:260px;"><img src="images/carnival.jpg" alt="Bestfly Carnival" style="width:100%;height:100%;object-fit:cover;"/><div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.7));"><div style="color:#fff;font-family:'Playfair Display',serif;font-size:18px;" data-i18n="event_carnival">Carnival Celebration</div><div style="color:rgba(255,255,255,0.7);font-size:11px;letter-spacing:1px;">Angola · Annual Event</div></div></div>
+      <div style="border-radius:14px;overflow:hidden;position:relative;height:260px;"><img src="images/sports.jpg" alt="Bestfly Sports" style="width:100%;height:100%;object-fit:cover;"/><div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.7));"><div style="color:#fff;font-family:'Playfair Display',serif;font-size:18px;" data-i18n="event_sports">Sports Sponsorship</div><div style="color:rgba(255,255,255,0.7);font-size:11px;letter-spacing:1px;">Supporting Angolan Athletes</div></div></div>
+      <div style="border-radius:14px;overflow:hidden;position:relative;height:260px;"><img src="images/employee.jpg" alt="Bestfly Women in Aviation" style="width:100%;height:100%;object-fit:cover;"/><div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.7));"><div style="color:#fff;font-family:'Playfair Display',serif;font-size:18px;" data-i18n="event_women">Women in Aviation</div><div style="color:rgba(255,255,255,0.7);font-size:11px;letter-spacing:1px;">Diversity & Inclusion</div></div></div>
+      <div style="border-radius:14px;overflow:hidden;position:relative;height:260px;"><img src="images/fathers-day.jpg" alt="Bestfly Legacy" style="width:100%;height:100%;object-fit:cover;"/><div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.7));"><div style="color:#fff;font-family:'Playfair Display',serif;font-size:18px;" data-i18n="event_legacy">Legacy & Family</div><div style="color:rgba(255,255,255,0.7);font-size:11px;letter-spacing:1px;">Building the Future</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREERS (Google Sheets Integration) -->
+<section id="careers" style="padding:100px 64px;background:var(--white);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="section-label" data-i18n="careers_label">Join Our Team</div>
+    <div class="section-title" data-i18n-html="careers_title">Careers at<br/><em>Bestfly</em></div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px;">
+      <span style="font-size:13px;color:var(--text-mid);" data-i18n="careers_powered">Open positions powered by</span>
+      <span style="background:var(--blue-ultra);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--blue);letter-spacing:0.5px;display:inline-flex;align-items:center;gap:6px;">📊 Google Sheets</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:4px;">Captain — Global Express</div>
+          <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;align-items:center;"><span>📍 Luanda, Angola</span><span>✈️ Heavy Jet</span><span style="background:rgba(29,165,90,.1);color:var(--green);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;">OPEN</span></div>
+        </div>
+        <button class="book-btn" onclick="window.open('mailto:careers@bestfly.aero?subject=Application: Captain - Global Express','_blank')" data-i18n="btn_apply">Apply →</button>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:4px;">First Officer — Challenger 350</div>
+          <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;align-items:center;"><span>📍 Luanda, Angola</span><span>✈️ Super Mid Jet</span><span style="background:rgba(29,165,90,.1);color:var(--green);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;">OPEN</span></div>
+        </div>
+        <button class="book-btn" onclick="window.open('mailto:careers@bestfly.aero?subject=Application: First Officer - Challenger 350','_blank')" data-i18n="btn_apply">Apply →</button>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:4px;">Cabin Crew</div>
+          <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;align-items:center;"><span>📍 Luanda, Angola</span><span>🛫 All Fleet</span><span style="background:rgba(29,165,90,.1);color:var(--green);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;">OPEN</span></div>
+        </div>
+        <button class="book-btn" onclick="window.open('mailto:careers@bestfly.aero?subject=Application: Cabin Crew','_blank')" data-i18n="btn_apply">Apply →</button>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:4px;">Ground Operations Manager</div>
+          <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;align-items:center;"><span>📍 Luanda, Angola</span><span>🏢 Operations</span><span style="background:rgba(29,165,90,.1);color:var(--green);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;">OPEN</span></div>
+        </div>
+        <button class="book-btn" onclick="window.open('mailto:careers@bestfly.aero?subject=Application: Ground Operations Manager','_blank')" data-i18n="btn_apply">Apply →</button>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s,transform .3s;" onmouseover="this.style.boxShadow='var(--shadow)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--blue);margin-bottom:4px;">Aircraft Maintenance Engineer</div>
+          <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;align-items:center;"><span>📍 Johannesburg, South Africa</span><span>🔧 Engineering</span><span style="background:rgba(29,165,90,.1);color:var(--green);padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;">OPEN</span></div>
+        </div>
+        <button class="book-btn" onclick="window.open('mailto:careers@bestfly.aero?subject=Application: Aircraft Maintenance Engineer','_blank')" data-i18n="btn_apply">Apply →</button>
+      </div>
+    </div>
+    <div style="margin-top:24px;font-size:12px;color:var(--text-muted);letter-spacing:0.5px;" data-i18n="careers_note">All positions include competitive salary, travel benefits, and professional development. Send CV to careers@bestfly.aero</div>
+  </div>
+</section>
+
 <!-- FOOTER -->
-<footer>
+<footer id="contact">
   <div class="footer-inner">
-    <div><span class="footer-logo">BEST<span>FLY</span></span><p class="footer-blurb" data-i18n="footer_blurb">Angola's leading private aviation company. Charter, manage, and fly — all in one modern platform.</p></div>
+    <div><span class="footer-logo"><img src="images/logo.jpg" alt="Bestfly" style="height:32px;vertical-align:middle;margin-right:8px;border-radius:4px;"/>BEST<span>FLY</span></span><p class="footer-blurb" data-i18n="footer_blurb">Angola's leading private aviation company. Charter, manage, and fly — all in one modern platform.</p></div>
     <div><div class="footer-col-title" data-i18n="footer_services">Services</div><ul class="footer-links"><li><a href="#" data-i18n="svc1_name">Aircraft Charter</a></li><li><a href="#" data-i18n="svc2_name">Fleet Management</a></li><li><a href="#" data-i18n="svc3_name">Catering</a></li><li><a href="#">Transfers</a></li></ul></div>
     <div><div class="footer-col-title" data-i18n="footer_company">Company</div><ul class="footer-links"><li><a href="#" data-i18n="nav_about">About</a></li><li><a href="#" data-i18n="fleet_label">Fleet</a></li><li><a href="#">Careers</a></li></ul></div>
     <div><div class="footer-col-title" data-i18n="nav_contact">Contact</div><ul class="footer-links"><li><a href="#">Luanda, Angola</a></li><li><a href="#">+244 930 000 000</a></li><li><a href="#"><span class="__cf_email__" data-cfemail="89eae1e8fbfdecfbc9ebecfafdefe5f0a7e8ecfbe6">[email&#160;protected]</span></a></li></ul></div>
@@ -1686,6 +1855,14 @@ const T = {
     success_title:"Flight Confirmed!",success_sub:"Your booking is confirmed. Full itinerary and passenger manifest sent to your email.",
     success_ref:"Keep this reference number for check-in.",
     gender_m:"Male",gender_f:"Female",gender_o:"Other",
+    nav_destinations:"Destinations",nav_availability:"Availability",nav_careers:"Careers",
+    pricing_label:"Charter Pricing",pricing_title:"Popular Routes<br/><em>from Luanda</em>",pricing_sub:"Indicative charter pricing for popular routes. Final quotes include all fees, taxes, and services. Prices shown in USD and Angolan Kwanza (AOA).",
+    avail_label:"Fleet Availability",avail_title:"Real-Time<br/><em>Aircraft Status</em>",avail_powered:"Powered by",avail_live:"· Live Data Feed",avail_updated:"Last updated: Live",
+    th_aircraft:"Aircraft",th_type:"Type",th_capacity:"Capacity",th_status:"Status",th_base:"Base",
+    community_label:"Community & Events",community_title:"Beyond Aviation,<br/><em>Building Community</em>",
+    event_carnival:"Carnival Celebration",event_sports:"Sports Sponsorship",event_women:"Women in Aviation",event_legacy:"Legacy & Family",
+    careers_label:"Join Our Team",careers_title:"Careers at<br/><em>Bestfly</em>",careers_powered:"Open positions powered by",careers_note:"All positions include competitive salary, travel benefits, and professional development. Send CV to careers@bestfly.aero",
+    btn_apply:"Apply →",
   },
   pt:{
     nav_fleet:"Frota",nav_services:"Serviços",nav_about:"Sobre",nav_contact:"Contacto",nav_book:"Reservar",
@@ -1734,6 +1911,14 @@ const T = {
     success_title:"Voo Confirmado!",success_sub:"A sua reserva está confirmada. Itinerário e manifesto enviados para o seu email.",
     success_ref:"Guarde este número de referência para o check-in.",
     gender_m:"Masculino",gender_f:"Feminino",gender_o:"Outro",
+    nav_destinations:"Destinos",nav_availability:"Disponibilidade",nav_careers:"Carreiras",
+    pricing_label:"Preços de Fretamento",pricing_title:"Rotas Populares<br/><em>a partir de Luanda</em>",pricing_sub:"Preços indicativos para rotas populares. Cotações finais incluem todas as taxas e serviços. Preços em USD e Kwanza Angolano (AOA).",
+    avail_label:"Disponibilidade da Frota",avail_title:"Estado em<br/><em>Tempo Real</em>",avail_powered:"Alimentado por",avail_live:"· Feed de Dados em Tempo Real",avail_updated:"Última atualização: Em tempo real",
+    th_aircraft:"Aeronave",th_type:"Tipo",th_capacity:"Capacidade",th_status:"Estado",th_base:"Base",
+    community_label:"Comunidade & Eventos",community_title:"Para Além da Aviação,<br/><em>Construindo Comunidade</em>",
+    event_carnival:"Celebração de Carnaval",event_sports:"Patrocínio Desportivo",event_women:"Mulheres na Aviação",event_legacy:"Legado & Família",
+    careers_label:"Junte-se à Equipa",careers_title:"Carreiras na<br/><em>Bestfly</em>",careers_powered:"Posições abertas alimentadas por",careers_note:"Todas as posições incluem salário competitivo, benefícios de viagem e desenvolvimento profissional. Envie CV para careers@bestfly.aero",
+    btn_apply:"Candidatar →",
   },
   fr:{
     nav_fleet:"Flotte",nav_services:"Services",nav_about:"À propos",nav_contact:"Contact",nav_book:"Réserver",
@@ -2086,7 +2271,7 @@ const jets = [
     base:72000, fees:8800, crew:11500,
     desc:"Bestfly's flagship ultra-long-range jet (reg. P4-BFY / P4-BFR). Non-stop Luanda to London, Dubai or New York. Features a full-size cabin with stand-up headroom, a private suite and full galley.",
     photos:[
-      {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/2010-07-21_G550_NetJets_CS-DKE_EDDF_01.jpg/960px-2010-07-21_G550_NetJets_CS-DKE_EDDF_01.jpg", caption:"Gulfstream G550 (same type as P4-BFY/P4-BFR) — Exterior"},
+      {url:"images/jet-tarmac.jpg", caption:"Bestfly Private Jet — On the Tarmac"},
       {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Gulfstream_G550_cabin_interior.JPG/960px-Gulfstream_G550_cabin_interior.JPG", caption:"Gulfstream G550 — Cabin Interior"},
       {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Gulfstream_G550_private_jet_seat.JPG/960px-Gulfstream_G550_private_jet_seat.JPG", caption:"Gulfstream G550 — Individual Seat"},
       {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Gulfstream_G550_cockpit.JPG/960px-Gulfstream_G550_cockpit.JPG", caption:"Gulfstream G550 — Flight Deck"}
